@@ -1,5 +1,6 @@
 FactoryBot.define do
-  factory :user do
+  factory :player do
+    name { "MyString" }
     email { "MyString" }
   end
 end

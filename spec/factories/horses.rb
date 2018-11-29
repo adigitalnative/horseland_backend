@@ -4,6 +4,6 @@ FactoryBot.define do
     breed { FactoryBot.build_stubbed(:breed) }
     color { "MyString" }
     age { 0 }
-    user { FactoryBot.build_stubbed(:user)}
+    player { FactoryBot.build_stubbed(:player)}
   end
 end

@@ -20,11 +20,11 @@ RSpec.describe Horse, type: :model do
     expect(horse).to respond_to(:breed)
   end
 
-  it "belongs to an user" do
-    expect(horse).to respond_to(:user)
+  it "belongs to an player" do
+    expect(horse).to respond_to(:player)
   end
 
-  it "can be set for_sale" do
+  xit "can be set for_sale" do
     expect(horse).to respond_to(:for_sale?)
   end
 end
