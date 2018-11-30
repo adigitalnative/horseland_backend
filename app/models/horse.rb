@@ -9,4 +9,9 @@ class Horse < ApplicationRecord
   def breed_name
     breed.name
   end
+
+  def toggle_for_sale
+    update(for_sale: !for_sale)
+  end
+
 end
