@@ -7,6 +7,8 @@ class Player < ApplicationRecord
 
   monetize :balance_cents
 
+  after_create :initial_deposit
+
   def available_horses
     Horse.where("for_sale = true AND player_id != #{self.id}")
   end
@@ -29,4 +31,9 @@ class Player < ApplicationRecord
     end
   end
 
+  private
+
+  def initial_deposit
+    deposit(10000, "Initial deposit")
+  end
 end

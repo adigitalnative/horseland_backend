@@ -75,7 +75,7 @@ RSpec.describe Player, type: :model do
       end
 
       it "deducts the amount from the player's total" do
-        expect(player.balance_cents).to eq(490000)
+        expect(player.balance_cents).to eq(1490000)
       end
 
       it "sets the descriptiion when provided" do
@@ -99,7 +99,7 @@ RSpec.describe Player, type: :model do
       end
 
       it "does not create the transaction" do
-        expect(player.transactions.count).to eq(0)
+        expect(player.transactions.last.description).to_not eq("Overdrawn")
       end
 
       it "returns false" do
@@ -129,6 +129,10 @@ RSpec.describe Player, type: :model do
   end
 
   context ".create" do
-    it "sets up an inital $10000 deposit into the user's account"
+    it "sets up an inital $10000 deposit into the user's account" do
+      player = FactoryBot.create(:player)
+      expect(player.balance_cents).to eq(10000*100)
+      expect(player.transactions.count).to eq(1)
+    end
   end
 end
