@@ -44,12 +44,13 @@ RSpec.describe Player, type: :model do
     let(:breed) { FactoryBot.create(:breed)}
     let(:horse) { FactoryBot.create(:horse, for_sale: true, player: player, breed: breed)}
     let(:second_player) {FactoryBot.create(:player) }
+
     xit "fails if the player already owns the horse" do
       # expect(player.buy(horse)).to raise_error
     end
 
     xit "fails if the horse is not for sale" do
-      horse.update(for_sale: false, )
+      horse.update(for_sale: false)
     end
 
     context "when the player can purchase the horse" do

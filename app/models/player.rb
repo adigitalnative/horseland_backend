@@ -14,6 +14,7 @@ class Player < ApplicationRecord
   end
 
   def buy(horse)
+    transfer(horse.player, 1000, "Purchase of #{horse.name}", "Sale of #{horse.name}")
     horse.update(player: self, for_sale: false)
   end
 
