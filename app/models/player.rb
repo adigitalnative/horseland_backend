@@ -1,6 +1,8 @@
 class Player < ApplicationRecord
 
   has_many :horses
+  has_many :transactions
+
   validates :email, presence: true
 
   monetize :balance_cents
@@ -12,4 +14,10 @@ class Player < ApplicationRecord
   def buy(horse)
     horse.update(player: self, for_sale: false)
   end
+
+  def deposit(amount, description="Deposit into account")
+    transactions.create(amount:amount, description: description)
+    update(balance: balance + Money.new(amount * 100))
+  end
+
 end

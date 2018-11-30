@@ -3,4 +3,6 @@ class Transaction < ApplicationRecord
 
   validates :amount_cents, presence: true
   validates :description, presence: true
+
+  monetize :amount_cents
 end
