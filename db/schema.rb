@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_080211) do
+ActiveRecord::Schema.define(version: 2018_11_30_143544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_080211) do
     t.boolean "for_sale", default: false, null: false
     t.bigint "player_id"
     t.string "gender"
+    t.string "image_url"
     t.index ["breed_id"], name: "index_horses_on_breed_id"
     t.index ["player_id"], name: "index_horses_on_player_id"
   end
@@ -44,6 +45,17 @@ ActiveRecord::Schema.define(version: 2018_11_30_080211) do
     t.string "balance_currency", default: "USD", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "player_id"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "USD", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["player_id"], name: "index_transactions_on_player_id"
+  end
+
   add_foreign_key "horses", "breeds"
   add_foreign_key "horses", "players"
+  add_foreign_key "transactions", "players"
 end
