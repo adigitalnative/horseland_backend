@@ -11,8 +11,8 @@ sellingPlayer = Player.find_or_create_by(email: "foo@mail.com", name: "User to s
 
 arabian = Breed.find_or_create_by(name: "Arabian")
 
-masie = Horse.find_or_create_by(name: "Masie", breed: arabian, color: "brown", age: 4, player: jq, gender: "female")
-max = Horse.find_or_create_by(name: "Max", breed: arabian, color: "brown", age: 6, player: jq, gender: "male")
+masie = Horse.find_or_create_by(name: "Masie", breed: arabian, color: "brown", age: 4, player: jq, gender: "female", image_url: "https://images.pexels.com/photos/614507/pexels-photo-614507.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+max = Horse.find_or_create_by(name: "Max", breed: arabian, color: "brown", age: 6, player: jq, gender: "male", image_url: "https://images.pexels.com/photos/1626584/pexels-photo-1626584.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 
 
 # Build some random seed horses for sale
