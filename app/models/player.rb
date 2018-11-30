@@ -25,7 +25,7 @@ class Player < ApplicationRecord
 
   def withdraw(amount, description="Withdrawal from account")
     if balance > Money.new(amount)
-      transaction = transactions.create(amount: amount, description: description)
+      transaction = transactions.create(amount: amount, description: description, withdrawal: true)
       update(balance: balance - transaction.amount)
     else
       false

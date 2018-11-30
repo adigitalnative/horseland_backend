@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_143544) do
+ActiveRecord::Schema.define(version: 2018_11_30_205724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_143544) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "withdrawal", default: false, null: false
     t.index ["player_id"], name: "index_transactions_on_player_id"
   end
 

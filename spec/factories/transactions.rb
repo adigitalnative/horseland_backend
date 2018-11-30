@@ -3,5 +3,6 @@ FactoryBot.define do
     player { FactoryBot.build_stubbed(:player) }
     amount_cents { 0 }
     description { "Test Description" }
+    withdrawal { false }
   end
 end
