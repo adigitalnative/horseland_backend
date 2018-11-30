@@ -7,4 +7,8 @@ class Player < ApplicationRecord
   def available_horses
     Horse.where("for_sale = true AND player_id != #{self.id}")
   end
+
+  def buy(horse)
+    horse.update(player: self)
+  end
 end

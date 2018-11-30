@@ -38,4 +38,22 @@ RSpec.describe Player, type: :model do
       expect(player.available_horses).to_not include(horse_for_sale_one)
     end
   end
+
+  context "#buy(horse)" do
+    let(:player) { FactoryBot.create(:player) }
+    it "fails if the player already owns the horse"
+    it "fails if the horse is not for sale"
+
+    context "when the player can purchase the horse" do
+      before do
+        @horse = FactoryBot.create(:horse, for_sale: true, player: FactoryBot.create(:player), breed: FactoryBot.create(:breed))
+        player.buy(@horse)
+      end
+
+      it "sets the horse's player to the new owner" do
+        expect(@horse.player).to eq(player)
+      end
+    end
+
+  end
 end
