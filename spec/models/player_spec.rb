@@ -66,9 +66,28 @@ RSpec.describe Player, type: :model do
   end
 
   context "#withdraw(amount, [description])" do
+    let(:player) { FactoryBot.create(:player) }
+
     context "when the player has enough cash" do
-      it "deducts the amount from the player's total"
+      before do
+        player.deposit(5000, "Starter cash")
+        player.withdraw(100, "Buyin' stuff")
+      end
+
+      it "deducts the amount from the player's total" do
+        expect(player.balance_cents).to eq(490000)
+      end
+
+      it "sets the descriptiion when provided" do
+        expect(player.transactions.last.description).to eq("Buyin' stuff")
+      end
+
+      it "has a good default for description" do
+        player.withdraw(200)
+        expect(player.transactions.last.description).to eq("Withdrawal from account")
+      end
     end
+    
     context "when the player does not have enough cash" do
       it "does not deduct the amount"
       it "does not create the transaction"

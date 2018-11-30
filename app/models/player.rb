@@ -16,8 +16,13 @@ class Player < ApplicationRecord
   end
 
   def deposit(amount, description="Deposit into account")
-    transactions.create(amount:amount, description: description)
-    update(balance: balance + Money.new(amount * 100))
+    transaction = transactions.create(amount:amount, description: description)
+    update(balance: balance + transaction.amount)
+  end
+
+  def withdraw(amount, description="Withdrawal from account")
+    transaction = transactions.create(amount: amount, description: description)
+    update(balance: balance - transaction.amount)
   end
 
 end
