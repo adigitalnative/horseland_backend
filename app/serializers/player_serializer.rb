@@ -1,4 +1,4 @@
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :email, :name
+  attributes :id, :email, :name, :available_horses
   has_many :horses
 end
