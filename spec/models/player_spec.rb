@@ -40,20 +40,34 @@ RSpec.describe Player, type: :model do
   end
 
   context "#buy(horse)" do
-    let(:player) { FactoryBot.create(:player) }
-    it "fails if the player already owns the horse"
-    it "fails if the horse is not for sale"
+    let(:first_player) { FactoryBot.create(:player) }
+    let(:breed) { FactoryBot.create(:breed)}
+    let(:horse) { FactoryBot.create(:horse, for_sale: true, player: player, breed: breed)}
+    let(:second_player) {FactoryBot.create(:player) }
+    xit "fails if the player already owns the horse" do
+      # expect(player.buy(horse)).to raise_error
+    end
+
+    it "fails if the horse is not for sale" do
+      horse.update(for_sale: false, )
+    end
 
     context "when the player can purchase the horse" do
       before do
-        @horse = FactoryBot.create(:horse, for_sale: true, player: FactoryBot.create(:player), breed: FactoryBot.create(:breed))
-        player.buy(@horse)
+        @horse = FactoryBot.create(:horse, for_sale: true, player: FactoryBot.create(:player), breed: breed)
+        first_player.buy(@horse)
       end
 
       it "sets the horse's player to the new owner" do
-        expect(@horse.player).to eq(player)
+        expect(@horse.player).to eq(first_player)
       end
     end
 
+  end
+
+  context "#withdraw_funds(amount, [description])" do
+    context "when the player has enough cash" do
+      it "deducts the amount from the player's total"
+    end
   end
 end
