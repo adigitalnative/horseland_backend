@@ -87,10 +87,24 @@ RSpec.describe Player, type: :model do
         expect(player.transactions.last.description).to eq("Withdrawal from account")
       end
     end
-    
+
     context "when the player does not have enough cash" do
-      it "does not deduct the amount"
-      it "does not create the transaction"
+      before do
+        player.update(balance_cents: 0)
+        player.withdraw(100, "Overdrawn")
+      end
+
+      it "does not deduct the amount" do
+        expect(player.balance_cents).to eq(0)
+      end
+
+      it "does not create the transaction" do
+        expect(player.transactions.count).to eq(0)
+      end
+
+      it "returns false" do
+        expect(player.withdraw(300)).to eq(false)
+      end
     end
   end
 
