@@ -11,6 +11,11 @@ RSpec.describe Horse, type: :model do
     expect(horse).to_not be_valid
   end
 
+  it "is invalid without a gender" do
+    horse.gender = nil
+    expect(horse).to_not be_valid
+  end
+
   it "is invalid without an age" do
     horse.age = nil
     expect(horse).to_not be_valid

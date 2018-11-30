@@ -6,4 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-jq = FactoryBot.create(:player, email: "jq@nativefoundry.com", name: "Jacqueline")
+jq = Player.find_or_create_by(email: "jq@nativefoundry.com", name: "Jacqueline")
+
+arabian = Breed.find_or_create_by(name: "Arabian")
+
+masie = Horse.find_or_create_by(name: "Masie", breed: arabian, color: "Brown", age: 4, player: jq, gender: "female")
+max = Horse.find_or_create_by(name: "Max", breed: arabian, color: "Brown", age: 6, player: jq, gender: "male")

@@ -5,5 +5,6 @@ FactoryBot.define do
     color { "MyString" }
     age { 0 }
     player { FactoryBot.build_stubbed(:player)}
+    gender {"female"}
   end
 end
