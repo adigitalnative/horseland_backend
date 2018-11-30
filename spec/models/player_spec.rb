@@ -128,6 +128,35 @@ RSpec.describe Player, type: :model do
     end
   end
 
+  context "#transfer" do
+    let(:player_one) { FactoryBot.create(:player) }
+    let(:player_two) { FactoryBot.create(:player) }
+    context "when first user has enough money" do
+      before do
+        player_one.deposit(10000)
+        @player_one_balance = player_one.balance_cents
+        @player_two_balance = player_two.balance_cents
+        player_one.transfer(player_two, 500, "Sale of horse", "purchase of horse")
+      end
+
+      context "the first user" do
+        it "withdraws the correct amount" do
+          expect(player_one.balance_cents).to eq(@player_one_balance - 500*100)
+        end
+      end
+
+      context "the second user" do
+        it "deposits the correct amount" do
+          expect(player_two.balance_cents).to eq(@player_two_balance + 500*100)
+        end
+        it "has a good default for the transaction description"
+      end
+    end
+    context "when the initiator does not have enough money" do
+      it "does not transfer the funds"
+    end
+  end
+
   context ".create" do
     it "sets up an inital $10000 deposit into the user's account" do
       player = FactoryBot.create(:player)

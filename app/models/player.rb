@@ -31,6 +31,11 @@ class Player < ApplicationRecord
     end
   end
 
+  def transfer(player_two, amount, withdrawal_desc="Transfer to ${player_two.name}", deposit_desc="Transfer from ${player_one.name}")
+    self.withdraw(amount, withdrawal_desc)
+    player_two.deposit(amount, deposit_desc)
+  end
+
   private
 
   def initial_deposit
