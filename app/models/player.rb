@@ -9,6 +9,6 @@ class Player < ApplicationRecord
   end
 
   def buy(horse)
-    horse.update(player: self)
+    horse.update(player: self, for_sale: false)
   end
 end

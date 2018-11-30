@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :horse do
-    name { "MyString" }
+    name { Faker::Ancient.hero }
     breed { FactoryBot.build_stubbed(:breed) }
-    color { "MyString" }
-    age { 0 }
+    color { "Brown" }
+    age { rand(0..20) }
     player { FactoryBot.build_stubbed(:player)}
     gender {"female"}
   end

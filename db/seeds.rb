@@ -7,8 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 jq = Player.find_or_create_by(email: "jq@nativefoundry.com", name: "Jacqueline")
+sellingPlayer = Player.find_or_create_by(email: "foo@mail.com", name: "User to sell things")
 
 arabian = Breed.find_or_create_by(name: "Arabian")
 
 masie = Horse.find_or_create_by(name: "Masie", breed: arabian, color: "brown", age: 4, player: jq, gender: "female")
 max = Horse.find_or_create_by(name: "Max", breed: arabian, color: "brown", age: 6, player: jq, gender: "male")
+
+
+# Build some random seed horses for sale
+10.times {FactoryBot.create(:horse, for_sale: true, gender: "female", breed: arabian, player: sellingPlayer)}
+10.times {FactoryBot.create(:horse, for_sale: true, gender: "male", breed: arabian, player: sellingPlayer)}
