@@ -14,7 +14,7 @@ class Player < ApplicationRecord
   # end
 
   def buy(horse)
-    transfer(horse.player, 1000, "Purchase of #{horse.name}", "Sale of #{horse.name}")
+    transfer(horse.player, horse.sale_price, "Purchase of #{horse.name}", "Sale of #{horse.name}")
     horse.update(player: self, for_sale: false)
   end
 
@@ -27,14 +27,19 @@ class Player < ApplicationRecord
     if balance > Money.new(amount)
       transaction = transactions.create(amount: amount, description: description, withdrawal: true)
       update(balance: balance - transaction.amount)
+      true
     else
       false
     end
   end
 
   def transfer(player_two, amount, withdrawal_desc="Transfer to ${player_two.name}", deposit_desc="Transfer from ${player_one.name}")
-    self.withdraw(amount, withdrawal_desc)
-    player_two.deposit(amount, deposit_desc)
+    if self.withdraw(amount, withdrawal_desc)
+      player_two.deposit(amount, deposit_desc)
+      true
+    else
+      false
+    end
   end
 
   private
