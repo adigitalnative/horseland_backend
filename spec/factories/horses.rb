@@ -7,5 +7,6 @@ FactoryBot.define do
     player { FactoryBot.build_stubbed(:player)}
     gender {"female"}
     image_url {"https://via.placeholder.com/200"}
+    sale_price { 1000 }
   end
 end

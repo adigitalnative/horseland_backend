@@ -5,6 +5,7 @@ class Horse < ApplicationRecord
   validates :name, presence: true
   validates :age, presence: true, numericality: {only_integer: true}
   validates :gender, presence: true, inclusion: { in: ["male", "female", "gelding"]}
+  validates :sale_price, presence: true, numericality: {only_integer: true}
 
   def breed_name
     breed.name

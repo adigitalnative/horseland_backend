@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :players, only: [:show] do
         patch "/horses/:horse_id/toggle_for_sale", to: "horses#toggle_for_sale"
       end
+      resources :horses, only: [:update]
     end
   end
 end

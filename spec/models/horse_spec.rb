@@ -21,6 +21,11 @@ RSpec.describe Horse, type: :model do
     expect(horse).to_not be_valid
   end
 
+  it "is invalid without a sale_price" do
+    horse.sale_price = nil
+    expect(horse).to_not be_valid
+  end
+
   it "has a breed" do
     expect(horse).to respond_to(:breed)
   end
