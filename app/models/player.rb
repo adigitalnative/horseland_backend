@@ -9,10 +9,6 @@ class Player < ApplicationRecord
 
   after_create :initial_deposit
 
-  # def available_horses
-  #   Horse.where("for_sale = true AND player_id != #{self.id}")
-  # end
-
   def buy(horse)
     transfer(horse.player, horse.sale_price, "Purchase of #{horse.name}", "Sale of #{horse.name}")
     horse.update(player: self, for_sale: false)
