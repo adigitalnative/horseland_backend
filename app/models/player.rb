@@ -1,9 +1,10 @@
 class Player < ApplicationRecord
 
   has_many :horses
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 
-  validates :email, presence: true
+  has_secure_password
+  validates :email, uniqueness: { case_sensitive: false }
 
   monetize :balance_cents
 
