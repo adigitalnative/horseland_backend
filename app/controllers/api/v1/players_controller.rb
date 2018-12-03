@@ -3,7 +3,7 @@ class Api::V1::PlayersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
   def show
-    render json: Player.first, status: :accepted
+    render json: @player, status: :accepted
   end
 
   def create
