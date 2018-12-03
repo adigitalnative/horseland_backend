@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-jq = Player.find_or_create_by(email: "jq@nativefoundry.com", name: "Jacqueline")
-sellingPlayer = Player.find_or_create_by(email: "foo@mail.com", name: "User to sell things")
+jq = Player.create_with(password: "password").find_or_create_by(email: "jq@nativefoundry.com", name: "Jacqueline")
+
+sellingPlayer = Player.create_with(password: "password").find_or_create_by(email: "foo@mail.com", name: "User to sell things")
 
 arabian = Breed.find_or_create_by(name: "Arabian")
 

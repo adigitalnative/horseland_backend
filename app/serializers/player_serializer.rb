@@ -1,5 +1,5 @@
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :id, :email, :name, :bank_balance, :available_horses
+  attributes :id, :email, :name, :bank_balance, :available_horses, :description
   has_many :horses
   has_many :transactions
 

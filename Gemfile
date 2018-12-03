@@ -38,6 +38,9 @@ gem 'money-rails', '~>1.12'
 # Use Javascript Web Tokens for auth token encrypt/decrypt
 gem 'jwt'
 
+# Use Loofah Activerecord to sanitize HTML inputs
+gem 'loofah-activerecord'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

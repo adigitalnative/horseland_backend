@@ -1,11 +1,15 @@
 class Player < ApplicationRecord
 
+  # app/model/post.rb
+  html_fragment :description, :scrub => :prune  # scrubs `body` using the :prune scrubber
+
   has_many :horses
   has_many :transactions, dependent: :destroy
 
   has_secure_password
-  validates :email, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
   validates :name, presence: true
+  validates :password, presence: true
 
   monetize :balance_cents
 

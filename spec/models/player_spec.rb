@@ -15,7 +15,11 @@ RSpec.describe Player, type: :model do
   it "can have horses" do
     expect(player).to respond_to(:horses)
   end
-  
+
+  it "can have a description" do
+    expect(player).to respond_to(:description)
+  end
+
   context "#buy(horse)" do
     let(:first_player) { FactoryBot.create(:player) }
     let(:breed) { FactoryBot.create(:breed)}
