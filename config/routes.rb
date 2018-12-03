@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       patch "/purchase_horse", to: "players#buy_horse"
       post '/login', to: 'auth#create'
       get '/player', to: 'players#show'
+      patch '/player', to: 'players#update'
 
       resources :players, only: [:show, :create] do
         post '/profile', to: 'players#profile'

@@ -16,6 +16,14 @@ class Api::V1::PlayersController < ApplicationController
     end
   end
 
+  def update
+    if @player.update(player_params)
+      render json: @player, status: :accepted
+    else
+      render json: { message: "Failed to update player", error: true}, status: :not_acceptable
+    end
+  end
+
   def buy_horse
     body = JSON.parse(request.body.read())
     player = Player.find(body["playerId"])
@@ -27,7 +35,7 @@ class Api::V1::PlayersController < ApplicationController
   private
 
   def player_params
-    params.require(:player).permit(:email, :password, :name)
+    params.require(:player).permit(:email, :password, :name, :description)
   end
 
 end
