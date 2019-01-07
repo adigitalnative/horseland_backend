@@ -1,24 +1,17 @@
-# README
+# The Horseland Game: Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails JSON API backend for a modern send-up to the mid-90's version of the Horseland Game. No relationship or official connection to the current or former Horseland game, other than for inspiration.
 
-Things you may want to cover:
+## Setup and Install
 
-* Ruby version
+As per any basic Rails install: clone the repo and run migrations (`rake db:setup` will get things up and running with some starter users and horses.)
 
-* System dependencies
+The app's CORS settings are currently set to any domain, so you may wish to change that to specify your specific front-end URL.
 
-* Configuration
+## Tests
 
-* Database creation
+Test suite is written in RSpec, so use `rspec` to run it.
 
-* Database initialization
+## Credits
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Jacqueline Chenault (@adigitalnative)
